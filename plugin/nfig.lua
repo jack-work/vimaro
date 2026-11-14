@@ -7,6 +7,10 @@ local function nfig()
 	return require("nfig")
 end
 
+vim.api.nvim_create_user_command("FigFix", function(opts)
+	nfig().fix(opts)
+end, { range = true, desc = "figaro: propose a fix as a diff, apply on y" })
+
 vim.api.nvim_create_user_command("FigAt", function(opts)
 	nfig().attend(vim.trim(opts.args))
 end, {
@@ -47,3 +51,6 @@ vim.api.nvim_create_user_command("FigStatus", function()
 	nfig().status()
 end, { desc = "figaro: status of the attended aria" })
 
+vim.keymap.set({ "n", "x" }, "<Plug>(nfig-fix)", function()
+	nfig().fix()
+end, { desc = "figaro: fix" })

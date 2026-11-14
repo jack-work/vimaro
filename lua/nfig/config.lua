@@ -5,6 +5,12 @@ M.defaults = {
 	forget = true,
 	notify = true,
 	compose_ft = "markdown",
+	fix = {
+		outfit = "cheap",
+		delete = { "skills" },
+		context = 5,
+		timeout_ms = 90000,
+	},
 }
 
 M.options = vim.deepcopy(M.defaults)

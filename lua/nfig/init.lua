@@ -7,6 +7,10 @@ function M.setup(opts)
 	return M
 end
 
+function M.fix(opts)
+	require("nfig.fix").fix(opts)
+end
+
 function M.attend(id, then_do)
 	require("nfig.aria").attend(id, then_do)
 end
