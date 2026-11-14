@@ -105,7 +105,18 @@ end
 
 local function ask(ctx, prompt, on_reply)
 	local fix = config.options.fix
-	local mint = { "new", "-A", "-O", fix.outfit, "-S", vim.json.encode({ mantra = "nfig fix " .. ctx.name }), "-j" }
+	local ttl_seconds = math.ceil(fix.timeout_ms / 1000) + 30
+	local mint = {
+		"new",
+		"-A",
+		"-O",
+		fix.outfit,
+		"-S",
+		vim.json.encode({ mantra = "nfig fix " .. ctx.name }),
+		"-S",
+		("system.ttl=%ds"):format(ttl_seconds),
+		"-j",
+	}
 	if fix.delete and #fix.delete > 0 then
 		vim.list_extend(mint, { "-D", table.concat(fix.delete, ",") })
 	end

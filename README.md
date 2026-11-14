@@ -57,15 +57,16 @@ model           = "gpt-5.6-luna"
 thinking_effort = "low"
 tools           = []
 credo           = "You fix code. Answer with exactly what the request asks for and nothing else."
-ttl             = "15m"
+ttl             = "2m"
 
 [system.methods]
 enabled = false
 ```
 
 `system.methods.enabled = false` stops figaro predicting the reasoning
-effort per message, so `low` holds. `ttl` reaps the figaro even if
-Neovim dies mid-request.
+effort per message, so `low` holds. nfig also sets `system.ttl` on each
+fixing figaro to `fix.timeout_ms` plus 30 seconds, so one orphaned by a crash or a failed kill is
+gone within two minutes.
 
 ## Talking to arias
 
