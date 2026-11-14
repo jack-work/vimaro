@@ -1,4 +1,4 @@
-# nfig
+# vimaro
 
 Neovim plugin for [figaro](https://github.com/jack-work/figaro).
 
@@ -12,15 +12,15 @@ lazy.nvim:
 
 ```lua
 {
-	"jack-work/nfig",
+	"jack-work/vimaro",
 	cmd = { "FigFix", "FigAt", "FigQ", "FigListen", "FigStatus", "FigDetach" },
 	opts = {},
 	keys = {
-		{ "grf", "<Plug>(nfig-fix)", mode = { "n", "x" }, desc = "Fix with figaro" },
-		{ "<leader>Fa", function() require("nfig").attend() end, desc = "Attend aria" },
-		{ "<leader>Fq", function() require("nfig").prompt(false) end, desc = "Prompt figaro" },
-		{ "<leader>Fq", function() require("nfig").prompt(true) end, mode = "x", desc = "Send selection" },
-		{ "<leader>Fl", function() require("nfig").listen() end, desc = "Listen to aria" },
+		{ "grf", "<Plug>(vimaro-fix)", mode = { "n", "x" }, desc = "Fix with figaro" },
+		{ "<leader>Fa", function() require("vimaro").attend() end, desc = "Attend aria" },
+		{ "<leader>Fq", function() require("vimaro").prompt(false) end, desc = "Prompt figaro" },
+		{ "<leader>Fq", function() require("vimaro").prompt(true) end, mode = "x", desc = "Send selection" },
+		{ "<leader>Fl", function() require("vimaro").listen() end, desc = "Listen to aria" },
 		{ "<leader>Fs", "<cmd>FigStatus<cr>", desc = "Aria status" },
 		{ "<leader>Fd", "<cmd>FigDetach<cr>", desc = "Detach aria" },
 	},
@@ -64,14 +64,14 @@ enabled = false
 ```
 
 `system.methods.enabled = false` stops figaro predicting the reasoning
-effort per message, so `low` holds. nfig also sets `system.ttl` on each
+effort per message, so `low` holds. vimaro also sets `system.ttl` on each
 fixing figaro to `fix.timeout_ms` plus 30 seconds, so one orphaned by a crash or a failed kill is
 gone within two minutes.
 
 ## Talking to arias
 
 Figaro's `attend` binds a shell pid, which means nothing to Neovim jobs,
-so nfig remembers the attended aria itself and passes `--id`.
+so vimaro remembers the attended aria itself and passes `--id`.
 
 | command | does |
 |---|---|
@@ -85,12 +85,12 @@ so nfig remembers the attended aria itself and passes `--id`.
 | `:FigDetach` | forget the attended aria |
 
 With nothing attended, sending offers a picker with a "new aria" entry.
-`require("nfig").statusline()` returns `figaro:<id>` for a statusline.
+`require("vimaro").statusline()` returns `figaro:<id>` for a statusline.
 
 ## Options
 
 ```lua
-require("nfig").setup({
+require("vimaro").setup({
 	cmd = "figaro",
 	forget = true,
 	notify = true,

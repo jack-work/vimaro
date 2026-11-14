@@ -2,7 +2,7 @@ local root = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h:h")
 vim.opt.rtp:prepend(root)
 package.path = root .. "/lua/?.lua;" .. root .. "/lua/?/init.lua;" .. package.path
 
-local diff = require("nfig.diff")
+local diff = require("vimaro.diff")
 local failures, passed = 0, 0
 
 local function test(name, fn)

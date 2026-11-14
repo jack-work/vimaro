@@ -1,5 +1,5 @@
-local config = require("nfig.config")
-local diff = require("nfig.diff")
+local config = require("vimaro.config")
+local diff = require("vimaro.diff")
 
 local M = {}
 
@@ -112,7 +112,7 @@ local function ask(ctx, prompt, on_reply)
 		"-O",
 		fix.outfit,
 		"-S",
-		vim.json.encode({ mantra = "nfig fix " .. ctx.name }),
+		vim.json.encode({ mantra = "vimaro fix " .. ctx.name }),
 		"-S",
 		("system.ttl=%ds"):format(ttl_seconds),
 		"-j",

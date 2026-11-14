@@ -1,4 +1,4 @@
-local config = require("nfig.config")
+local config = require("vimaro.config")
 
 local M = {}
 
